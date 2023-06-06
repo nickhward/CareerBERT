@@ -1,6 +1,6 @@
 # 🚀 **CareerBert**: an automated job search project! 🔍🎯
 
-![Animation2]((https://github.com/nickhward/CareerBERT/blob/main/gifs/Animation.gif))
+![Animation2](https://github.com/nickhward/CareerBERT/blob/main/gifs/Animation.gif)
 
 
 CareerBert is a tool that brings a data-driven approach to your job search. The aim of this project is to develop a different approach for comparing multiple job descriptions with a given resume. 
