@@ -1,15 +1,13 @@
 # 🚀 **CareerBert**: an automated job search project! 🔍🎯
 
-![Animation2](https://github.com/nickhward/CareerBERT/blob/main/gifs/Animation2.gif)
-![Animation2](https://github.com/nickhward/CareerBERT/blob/main/gifs/Animation.gif)
-
-
 CareerBert is a tool that brings a data-driven approach to your job search. The aim of this project is to develop a different approach for comparing multiple job descriptions with a given resume. 
 
 This system uses the power of **DistilBertSequence Classification** to classify sentences into categories such as `job description`, `skills`, and `education`. The model training and classification are accomplished using *Doccano*, an open-source text annotation tool, to label sentences effectively. 
 
 ⚠️ Kindly note, the model has been trained only on `data science`, `data analysis`, and `data engineering` roles. 
 
+![Animation2](https://github.com/nickhward/CareerBERT/blob/main/gifs/Animation2.gif)
+![Animation2](https://github.com/nickhward/CareerBERT/blob/main/gifs/Animation.gif)
 
 ## 🌐 **How to get Job Data?** 
 
