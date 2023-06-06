@@ -1,21 +1,6 @@
 
-from tqdm import tqdm
 from transformers import DistilBertTokenizerFast, DistilBertForSequenceClassification
-from torch.utils.data import Dataset, DataLoader
 import torch
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score
-from matplotlib import pyplot as plt
-import numpy as np
-import torch.nn as nn
-from torch.optim.lr_scheduler import StepLR
-from transformers import BertTokenizerFast, BertForSequenceClassification
-from transformers import RobertaTokenizerFast, RobertaForSequenceClassification
-from transformers import XLNetTokenizerFast, XLNetForSequenceClassification
-from transformers import ElectraTokenizerFast, ElectraForSequenceClassification
-from sklearn.metrics import confusion_matrix
-import seaborn as sns
-from typing import List, Tuple
 import logging
 import transformers
 
