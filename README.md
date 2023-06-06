@@ -1,5 +1,6 @@
 # 🚀 **CareerBert**: an automated job search project! 🔍🎯
 
+![Animation2](https://github.com/nickhward/CareerBERT/blob/main/gifs/Animation2.gif)
 ![Animation2](https://github.com/nickhward/CareerBERT/blob/main/gifs/Animation.gif)
 
 
