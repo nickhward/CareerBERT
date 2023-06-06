@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Processing Progress</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        .container {
+            flex-direction: column;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 30px; /* Increase the font size of the header */
+        }
+        #job_progressbar {
+            font-size: 40px; /* Increase the font size of the job progress percentage */
+            line-height: 40px; /* Set the line-height to match the height of the jobs progress bar */
+        }
+        #sentence_progressbar {
+            font-size: 40px; /* Increase the font size of the sentence progress percentage */
+        }
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <form>
+            <div class="mb-3">
+                <input id="file-input" type="file" accept=".pdf">
+                <button id="upload-button" type="submit" class="btn btn-primary">Upload</button>
+            </div>
+        </form>
+
+        <h1>Jobs and Sentences Processing</h1>
+        <div class="progress mb-3" style="width: 80%; height: 80px; position: relative;">
+            <div id="job_progressbar" class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 0%"></div>
+            <div class="progress-text">0%</div>
+        </div>
+        <div class="progress" style="width: 80%; height: 40px; position: relative;">
+            <div id="sentence_progressbar" class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 0%"></div>
+            <div class="progress-text">0%</div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.min.js"></script>
+    <script>
+        var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
+        socket.on('connect', function() {
+            //socket.emit('start');
+        });
+        socket.on('progress', function(data) {
+            let job_progressbar = $('#job_progressbar');
+            let sentence_progressbar = $('#sentence_progressbar');
+            let job_progress = Math.round(data.job_progress);
+            let sentence_progress = Math.round(data.sentence_progress);
+            job_progressbar.css('width', job_progress + '%').attr('aria-valuenow', job_progress);
+            sentence_progressbar.css('width', sentence_progress + '%').attr('aria-valuenow', sentence_progress);
+            job_progressbar.next('.progress-text').text(job_progress + '%');
+            sentence_progressbar.next('.progress-text').text(sentence_progress + '%');
+            if (data.job_progress >= 100 && data.sentence_progress >= 100) {
+                window.location.href = "/results";
+            }
+        });
+
+        $(document).ready(function() {
+        // Select the file input and upload button
+        var fileInput = $('#file-input');
+        var uploadButton = $('#upload-button');
+
+        // When the upload button is clicked
+        uploadButton.on('click', function(e) {
+            e.preventDefault();  // Prevent the form from being submitted normally
+
+            // Create a new FormData object, and append the file
+            var formData = new FormData();
+            formData.append('file', fileInput[0].files[0]);
+
+            // Create a new XMLHttpRequest
+            var xhr = new XMLHttpRequest();
+
+            // When the request is complete, emit the 'start' event
+            xhr.onload = function() {
+                if (xhr.status == 200) {
+                    var filename = xhr.responseText;  // Get the filename from the response
+                    socket.emit('start', filename);  // Pass the filename as data in the 'start' event
+                } else {
+                    console.error('File upload failed');
+                }
+            };
+
+            // Send the FormData object with the file to the server
+            xhr.open('POST', '/upload', true);
+            xhr.send(formData);
+        });
+    });
+
+    document.getElementById('upload-button').addEventListener('click', function(e) {
+        e.preventDefault();  // Prevent the form from submitting normally
+
+        // Select the file input
+        var fileInput = document.getElementById('file-input');
+
+        // Create a new FormData object, and append the file
+        var formData = new FormData();
+        formData.append('file', fileInput.files[0]);
+
+        fetch('/upload', {  // Replace '/upload' with your Flask route
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            } else {
+                // If the upload was successful, change the button to a check mark
+                var uploadButton = document.getElementById('upload-button');
+                uploadButton.textContent = '✅';  // This is a check mark emoji
+            }
+        })
+        .catch(e => {
+            console.log('There was an error with the upload: ' + e);
+        });
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Matches</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        .card { 
+            display: none;
+            background-color: rgb(29, 161, 242); /* light blue with slight transparency */
+            color: black;
+            margin: auto; /* centers the block horizontally */
+            overflow-y: auto;
+        }
+        .card-body {
+            max-width: none; /* Overrides Bootstrap's max-width */
+        }
+        .card.active { 
+            display: block;
+        }
+        .container {
+            height: 100vh;
+            display: flex;
+            align-items: center; /* centers the card vertically */
+            justify-content: center; /* centers the card horizontally */
+            flex-direction: column; /* make sure elements inside container stack vertically */
+        }
+        #next {
+            display: block;
+            margin: 20px auto 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% for job, score, jobdes_score, skills_score, links in zip(jobs, scores, jobdes_scores, skills_scores, links) %}
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ job }}</h5>
+                <p class="card-text">Link: <a href="{{ links }}">LINK TO JOB SITE</a></p>
+                <p class="card-text">Overall Similarity Score: {{ score }}</p>
+                <p class="card-text">Job Description Similarity Score: {{ jobdes_score }}</p>
+                <p class="card-text">Skills Similarity Score: {{ skills_score }}</p>
+            </div>
+        </div>
+        {% endfor %}
+        <button id="next" class="btn btn-primary">Next Job</button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            let activeIndex = 0;
+            let cards = $('.card');
+            $(cards[activeIndex]).addClass('active');
+
+            $('#next').click(function() {
+                $(cards[activeIndex]).removeClass('active');
+                activeIndex = (activeIndex + 1) % cards.length;
+                $(cards[activeIndex]).addClass('active');
+            });
+        });
+    </script>
+</body>
+</html>
