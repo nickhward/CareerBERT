@@ -2,12 +2,10 @@
 
 CareerBert is a tool that brings a data-driven approach to your job search. The aim of this project is to develop a different approach for comparing multiple job descriptions with a given resume. 
 
-This system uses the power of **DistilBertSequence Classification** to classify sentences into categories such as `job description`, `skills`, and `education`. The model training and classification are accomplished using *Doccano*, an open-source text annotation tool, to label sentences effectively. 
+This system uses the power of **DistilBertSequence Classification** to classify sentences into categories such as `job description`, `skills`, and `education`. The model training data labeling was accomplished using *Doccano*, an open-source text annotation tool, to label sentences effectively. 
 
 ⚠️ Kindly note, the model has been trained only on `data science`, `data analysis`, and `data engineering` roles. 
 
-![Animation2](https://github.com/nickhward/CareerBERT/blob/main/gifs/Animation2.gif)
-![Animation2](https://github.com/nickhward/CareerBERT/blob/main/gifs/Animation.gif)
 
 ## 🌐 **How to get Job Data?** 
 
@@ -34,7 +32,10 @@ Choose between running in the terminal or launching a Flask app:
 - For terminal: `python main.py resume.pdf`
 - For Flask app: `python app.py`
 
-The Flask app displays the job description, the link to the webpage, and the similarity scores in total and per section.
+![Animation2](https://github.com/nickhward/CareerBERT/blob/main/gifs/Animation2.gif)
+![Animation2](https://github.com/nickhward/CareerBERT/blob/main/gifs/Animation.gif)
+
+The Flask app then displays the job description, the link to the webpage, and the similarity scores in total and per section.
 
 
 ## 📄 **Resume Parser Formatting** 
