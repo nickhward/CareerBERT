@@ -1,6 +1,5 @@
 # 🚀 **CareerBert**: an automated job search project! 🔍🎯
 
----
 
 CareerBert is a tool that brings a data-driven approach to your job search. The aim of this project is to develop a different approach for comparing multiple job descriptions with a given resume. 
 
@@ -8,7 +7,6 @@ This system uses the power of **DistilBertSequence Classification** to classify 
 
 ⚠️ Kindly note, the model has been trained only on `data science`, `data analysis`, and `data engineering` roles. 
 
----
 
 ## 🌐 **How to get Job Data?** 
 
@@ -16,7 +14,6 @@ For data extraction, an API key from *SerpAPI* is required. Once obtained, repla
 
 ❗ Run judiciously to avoid ban due to scraping rules.
 
----
 
 ## 🛠 **Model Training & Usage** 
 
@@ -24,7 +21,6 @@ Model training requires GPU support and is done on *Google Colab* with a GPU run
 
 To train a model on a different role, uncomment the last line in the notebook that saves a model, add the model to the `trained_models` directory, and change the model name in the code accordingly.
 
----
 
 ## 📝 **Resume Parsing and Matching** 
 
@@ -37,7 +33,6 @@ Choose between running in the terminal or launching a Flask app:
 
 The Flask app displays the job description, the link to the webpage, and the similarity scores in total and per section.
 
----
 
 ## 📄 **Resume Parser Formatting** 
 
