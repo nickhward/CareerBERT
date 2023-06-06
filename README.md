@@ -27,6 +27,8 @@ To train a model on a different role, uncomment the last line in the notebook th
 
 The system transforms each sentence of a resume and the job description in question into a TF-IDF representation and uses cosine similarity to compare it with job descriptions. Resume parsing is currently supported only for PDF files.
 
+Before running the programs make sure to run in terminal: `pip install -r requirements.txt`
+
 Choose between running in the terminal or launching a Flask app:
 
 - For terminal: `python main.py resume.pdf`
