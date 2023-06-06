@@ -17,6 +17,9 @@ ALLOWED_EXTENSIONS = {'pdf'}
 app = Flask(__name__)
 socketio = SocketIO(app)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+# Check if the UPLOAD_FOLDER exists and create it if not
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
 
 # Global variable to hold the results
 results = {}
