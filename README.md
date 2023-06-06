@@ -2,6 +2,7 @@
 
 ![Alt Text](![Animation2](https://github.com/nickhward/CareerBERT/assets/78880630/6315f834-1491-4162-aba0-1bc887a1a26f))
 
+
 CareerBert is a tool that brings a data-driven approach to your job search. The aim of this project is to develop a different approach for comparing multiple job descriptions with a given resume. 
 
 This system uses the power of **DistilBertSequence Classification** to classify sentences into categories such as `job description`, `skills`, and `education`. The model training and classification are accomplished using *Doccano*, an open-source text annotation tool, to label sentences effectively. 
