@@ -47,4 +47,8 @@ Currently, the resume parser expects the resume sections to be in the following 
 
 This will expand in the future to accommodate more diverse resume structures.
 
+Here is an example of how my resume structure is set up. Just as long as the headers are the same wording the program will extract your resume information:
+
+![resume_screenshot](https://github.com/nickhward/CareerBERT/assets/78880630/02808dc6-fb88-4856-8399-10a8bbf7e5b7)
+
 
